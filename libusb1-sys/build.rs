@@ -178,7 +178,9 @@ fn main() {
         .map(|s| s.contains("crt-static"))
         .unwrap_or_default();
 
-    if cfg!(feature = "vendored") || !find_libusb_pkg(statik) {
+    let is_illumos = std::env::var("CARGO_CFG_TARGET_OS") == Ok("illumos".into());
+
+    if (!is_illumos && cfg!(feature = "vendored")) || !find_libusb_pkg(statik) {
         make_source();
     }
 }
