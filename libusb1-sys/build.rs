@@ -1,6 +1,6 @@
 use std::{env, fs, path::PathBuf};
 
-static VERSION: &'static str = "1.0.24";
+static VERSION: &'static str = "1.0.26";
 
 fn link(name: &str, bundled: bool) {
     use std::env::var;
