@@ -106,6 +106,7 @@ fn make_source() {
         base_config.file(libusb_source.join("libusb/os/darwin_usb.c"));
         link_framework("CoreFoundation");
         link_framework("IOKit");
+        link_framework("Security");
         link("objc", false);
     }
 
