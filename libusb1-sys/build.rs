@@ -1,6 +1,6 @@
 use std::{env, fs, path::PathBuf};
 
-static VERSION: &str = "1.0.24";
+static VERSION: &'static str = "1.0.26";
 
 fn link(name: &str, bundled: bool) {
     use std::env::var;
@@ -213,9 +213,9 @@ fn main() {
         }
     };
 
-    let is_freebsd = std::env::var("CARGO_CFG_TARGET_OS") == Ok("freebsd".into());
+    let is_illumos = std::env::var("CARGO_CFG_TARGET_OS") == Ok("illumos".into());
 
-    if (!is_freebsd && cfg!(feature = "vendored")) || !find_libusb_pkg(statik) {
+    if (!is_illumos && cfg!(feature = "vendored")) || !find_libusb_pkg(statik) {
         make_source();
     }
 }
